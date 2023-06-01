@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="clr-namespace:ModelCom.Views"
+             x:Class="ModelCom.Views.SettingsView">
+
+	<StackPanel >
+
+		<local:ButtonBarView/>
+		<TextBlock Text=" Максимальный Диапазон Значений, 1/c" Margin="0 60 0 10"/>
+		<Grid>
+			
+			<CheckBox Classes="checkBox1" HorizontalAlignment="Left"
+			Margin="4"
+			IsChecked="{Binding IsCheckedCheckBox1}"
+			Content="Фиксированый"
+			Command="{Binding ChecBoxClicked1}"/>
+			<TextBox IsReadOnly ="{Binding IsChecked1}"
+					 Text="{Binding Set1}"
+					  AcceptsReturn="True"
+					 Background="{Binding Button1.ButtonText}"
+					 Margin="300 0 0 0"
+					 
+					Width="300"  Height="30"/>
+
+		</Grid>
+		<TextBlock Text="Время интервала, с" Margin="0 30 0 10"/>
+		<Grid>
+
+			<CheckBox Classes="checkBox2" HorizontalAlignment="Left"
+			Margin="4"
+			IsChecked="{Binding IsCheckedCheckBox2}"
+			Content="Авто"
+			Command="{Binding ChecBoxClicked2}"/>
+			
+			<TextBox IsReadOnly ="{Binding IsChecked2}"
+					 Text="{Binding Set2}"
+					 Background="{Binding Button2.ButtonText}"
+					 AcceptsReturn="True"
+					 Margin="300 0 0 0" Width="300"  Height="30"/>
+					
+
+		</Grid>
+
+		<Grid>
+			<TextBlock Text="Толщина линии" Margin="0 30 0 0"/>
+			<TextBox IsReadOnly ="false"
+					  AcceptsReturn="True"
+					 Text="{Binding Set3}"
+					 Margin="300 30 0 0" Width="300"  Height="30"/>
+			
+		</Grid>
+		
+	
+		<Button 
+					Content="Save"
+					
+					Foreground="Black"
+					
+			HorizontalAlignment="Center"
+			Width="160" Height="30" Margin="0 100 0 0"
+			Command="{Binding $parent[Window].DataContext.Save}"/>
+	
+		</StackPanel >
+</UserControl>

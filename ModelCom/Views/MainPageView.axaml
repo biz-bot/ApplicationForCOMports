@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:local="clr-namespace:ModelCom.Views"
+             x:Class="ModelCom.Views.MainPageView">
+
+	<StackPanel >
+
+		<local:ButtonBarView/>
+
+		<Grid>
+			<Button 
+					Content="Start"
+					Background="{Binding Button1.ButtonText}"
+					
+					Foreground="Black"
+					
+			VerticalAlignment="Top"
+			Width="160" Height="30" Margin="340 0 0 0"
+			Command="{Binding ButtonClickedStart}"/>
+
+			<Button 
+					Content="Stop"
+				Background="{Binding Button2.ButtonText}"
+				Foreground="Black"
+				
+					VerticalAlignment="Top"
+					HorizontalAlignment="Center"
+		Width="160" Height="30" 
+			Command="{Binding ButtonClickedStop}"/>
+
+			<Button 
+					Content="update"
+				Background="Blue"
+				Foreground="Black"
+				
+					VerticalAlignment="Top"
+		Width="160" Height="30" Margin="700 0 0 40"
+			Command="{Binding  $parent[Window].DataContext.ButtonClickedUpdade}"/>
+
+		</Grid>
+		<Grid>
+			<ItemsControl Items="{Binding Items}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+
+						<CheckBox Classes="checkBox1"
+								  HorizontalAlignment="Center"
+							Margin="{Binding Count}"
+							IsChecked="{Binding IsChecked}"
+							IsThreeState="{Binding IsChecked}"
+							Content="{Binding Description}"
+							CommandParameter="{Binding Description}"
+							Command="{Binding  $parent[Window].DataContext.ButtonClickedPort}"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</Grid>
+
+		<TextBox 
+				 Text="{Binding Description}"
+				Margin="0 200 0 0"
+				Width="1200"  Height="400"
+				 VerticalAlignment="Bottom"/>
+
+
+	</StackPanel>
+
+	
+</UserControl>
